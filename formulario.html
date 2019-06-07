@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="conatiner">
+        <form id="FormRest">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre del Restaurante</label>
+                <input type="text" class="form-control" id="rest_rSocial" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Direccion</label>
+                <input type="text" class="form-control" id="rest_direccion" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">referencia de ubicacion</label>
+                <input type="text" class="form-control" id="rest_refUbicacion" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">telefono</label>
+                <input type="text" class="form-control" id="rest_telefono" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">info</label>
+                <input type="text" class="form-control" id="rest_info" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Dias de atencion</label>
+                <input type="text" class="form-control" id="rest_dAtencion" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">hora de apertura</label>
+                <input type="text" class="form-control" id="rest_hApertura" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">hora de cierre</label>
+                <input type="text" class="form-control" id="rest_hCierre" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">latitud</label>
+                <input type="text" readonly class="form-control" id="rest_lat" placeholder="latitud">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">longitud</label>
+                <input type="text" readonly class="form-control" id="rest_lng" placeholder="longitud">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" class="form-control-file" id="rest_img">
+            </div>
+            <div id="contenedor"></div>
+            <button type="button" onclick="handleSubmit1()" class="btn btn-primary">enviar</button>
+        </form>
+    </div>
+</body>
+<script>
+    window.onload = () => {
+        let rest_lat = document.getElementById("rest_lat")
+        let rest_lng = document.getElementById("rest_lng")
+        let contenedor = document.getElementById("contenedor")
+        let rest_img = document.getElementById("rest_img")
+        let rest_rSocial = document.getElementById("rest_rSocial")
+        let rest_direccion = document.getElementById("rest_direccion")
+        let rest_refUbicacion = document.getElementById("rest_refUbicacion")
+        let rest_telefono = document.getElementById("rest_telefono")
+        let rest_info = document.getElementById("rest_info")
+        let rest_hCierre = document.getElementById("rest_hCierre")
+        let rest_hApertura = document.getElementById("rest_hApertura")
+        let rest_dAtencion = document.getElementById("rest_dAtencion")
+        let obtenerCoords = () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition((pos) => {
+                    // contenedor.innerHTML = `latitud ${pos.coords.latitude} longitud ${pos.coords.longitude}`
+                    rest_lat.value = `${pos.coords.latitude}`
+                    rest_lng.value = `${pos.coords.longitude}`
+                }, (error) => {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            contenedor.innerHTML = "ubicacion denegada por el usuario"
+                            break;
+                    }
+                })
+            } else {
+                document.getElementById("contenedor").innerHTML = "no tienes gps"
+            }
+        };
+        obtenerCoords();
+        handleSubmit1 = (e) => {
+            var formData = new FormData();
+            formData.append('rest_img',
+                rest_img.files[0],
+                rest_img.files[0].name);
+            formData.append('rest_rSocial', rest_rSocial.value)
+            formData.append('rest_direccion', rest_direccion.value)
+            formData.append('rest_telefono', rest_telefono.value)
+            formData.append('rest_lat', rest_lat.value)
+            formData.append('rest_lng', rest_lng.value)
+            formData.append('rest_info', rest_info.value)
+            formData.append('rest_refUbicacion', rest_refUbicacion.value)
+            formData.append('rest_dAtencion', rest_dAtencion.value)
+            formData.append('rest_hApertura', rest_hApertura.value )
+            formData.append('rest_hCierre', rest_hCierre.value)
+            formData.append('rest_avisos', 'prueba')
+            formData.append('rest_estado', 1)
+            formData.append('rest_verificacion', 0)
+            formData.append('usu_id', 1)
+            let headersRest = {
+                method: 'POST',
+                body: formData
+            };
+            fetch('https://huariquesback.herokuapp.com/api/restaurante/crear', headersRest)
+                .then(response => {
+                    console.log(response)
+                    return response.json();
+                }).then(data => {
+                    console.log(data);
+                    document.getElementById("FormRest").reset();
+                })
+
+        }
+    }
+</script>
+
+</html>
