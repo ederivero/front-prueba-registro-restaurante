@@ -8,49 +8,97 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
+
 </head>
 
 <body>
     <div class="conatiner">
         <form id="FormRest">
             <div class="form-group">
-                <label for="exampleInputEmail1">Nombre del Restaurante</label>
+                <label for="rest_rSocial">Nombre del Restaurante</label>
                 <input type="text" class="form-control" id="rest_rSocial" placeholder="Nombre">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Direccion</label>
-                <input type="text" class="form-control" id="rest_direccion" placeholder="Nombre">
+                <label for="rest_direccion">Direccion</label>
+                <input type="text" class="form-control" id="rest_direccion" placeholder="Ejm: Av. Ejercito 241">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">referencia de ubicacion</label>
-                <input type="text" class="form-control" id="rest_refUbicacion" placeholder="Nombre">
+                <label for="rest_refUbicacion">referencia de ubicacion</label>
+                <input type="text" class="form-control" id="rest_refUbicacion"
+                    placeholder="Ejm:cerca a la comisaria de yanahuara">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">telefono</label>
-                <input type="text" class="form-control" id="rest_telefono" placeholder="Nombre">
+                <label for="rest_telefono">telefono</label>
+                <input type="text" class="form-control" id="rest_telefono" placeholder="Ejm:957894562">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">info</label>
-                <input type="text" class="form-control" id="rest_info" placeholder="Nombre">
+                <label for="rest_info">info</label>
+                <input type="text" class="form-control" id="rest_info"
+                    placeholder="Ejm: venden muchos anticuchos y hamburguesas xD">
             </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Dias de atencion</label>
+            <!-- <div class="form-group">
+                <label for="rest_dAtencion">Dias de atencion</label>
                 <input type="text" class="form-control" id="rest_dAtencion" placeholder="Nombre">
+            </div> -->
+            <div class="row">
+                <div class="form-check ml-3 ">
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Lun" id="Lunes">
+                    <label class="form-check-label" for="Lunes">
+                        Lunes
+                    </label>
+                </div>
+                <div class="form-check ml-3 ">
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Mar" id="Martes">
+                    <label class="form-check-label" for="Martes">
+                        Martes
+                    </label>
+                </div>
+                <div class="form-check ml-3 ">
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Mier" id="Miercoles">
+                    <label class="form-check-label" for="Miercoles">
+                        Miercoles
+                    </label>
+                </div>
+                <div class="form-check ml-3 ">
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Jue" id="Jueves">
+                    <label class="form-check-label" for="Jueves">
+                        Jueves
+                    </label>
+                </div>
+                <div class="form-check ml-3 ">
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Vie" id="Viernes">
+                    <label class="form-check-label" for="Viernes">
+                        Viernes
+                    </label>
+                </div>
+                <div class="form-check ml-3 ">
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Sab" id="Sabado">
+                    <label class="form-check-label" for="Sabado">
+                        Sabado
+                    </label>
+                </div>
+                <div class="form-check ml-3 ">
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Dom" id="Domingo">
+                    <label class="form-check-label" for="Domingo">
+                        Domingo
+                    </label>
+                </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">hora de apertura</label>
-                <input type="text" class="form-control" id="rest_hApertura" placeholder="Nombre">
+                <label for="rest_hApertura">hora de apertura</label>
+                <input type="time" class="form-control" id="rest_hApertura" placeholder="Nombre">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">hora de cierre</label>
-                <input type="text" class="form-control" id="rest_hCierre" placeholder="Nombre">
+                <label for="rest_hCierre">hora de cierre</label>
+                <input type="time" class="form-control" id="rest_hCierre" placeholder="Nombre">
             </div>
+
             <div class="form-group">
-                <label for="exampleInputEmail1">latitud</label>
+                <label for="rest_lat">latitud</label>
                 <input type="text" readonly class="form-control" id="rest_lat" placeholder="latitud">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">longitud</label>
+                <label for="rest_lng">longitud</label>
                 <input type="text" readonly class="form-control" id="rest_lng" placeholder="longitud">
             </div>
             <div class="form-group">
@@ -95,6 +143,29 @@
         };
         obtenerCoords();
         handleSubmit1 = (e) => {
+            var Horarios = []
+            if (document.getElementById("Lunes").checked == true) {
+                Horarios.push(document.getElementById("Lunes").value)
+            }
+            if (document.getElementById("Martes").checked == true) {
+                Horarios.push(document.getElementById("Martes").value)
+            }
+            if (document.getElementById("Miercoles").checked == true) {
+                Horarios.push(document.getElementById("Miercoles").value)
+            }
+            if (document.getElementById("Jueves").checked == true) {
+                Horarios.push(document.getElementById("Jueves").value)
+            }
+            if (document.getElementById("Viernes").checked == true) {
+                Horarios.push(document.getElementById("Viernes").value)
+            }
+            if (document.getElementById("Sabado").checked == true) {
+                Horarios.push(document.getElementById("Sabado").value)
+            }
+            if (document.getElementById("Domingo").checked == true) {
+                Horarios.push(document.getElementById("Domingo").value)
+            }
+
             var formData = new FormData();
             formData.append('rest_img',
                 rest_img.files[0],
@@ -106,8 +177,8 @@
             formData.append('rest_lng', rest_lng.value)
             formData.append('rest_info', rest_info.value)
             formData.append('rest_refUbicacion', rest_refUbicacion.value)
-            formData.append('rest_dAtencion', rest_dAtencion.value)
-            formData.append('rest_hApertura', rest_hApertura.value )
+            formData.append('rest_dAtencion', Horarios.toString())
+            formData.append('rest_hApertura', rest_hApertura.value)
             formData.append('rest_hCierre', rest_hCierre.value)
             formData.append('rest_avisos', 'prueba')
             formData.append('rest_estado', 1)
@@ -123,9 +194,9 @@
                     return response.json();
                 }).then(data => {
                     console.log(data);
+                    alert("restaurante subido exitosamente")
                     document.getElementById("FormRest").reset();
                 })
-
         }
     }
 </script>
