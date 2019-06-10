@@ -12,29 +12,30 @@
 </head>
 
 <body>
-    <div class="conatiner">
+    <div class="container">
         <form id="FormRest">
             <div class="form-group">
                 <label for="rest_rSocial">Nombre del Restaurante</label>
-                <input type="text" class="form-control" id="rest_rSocial" placeholder="Nombre">
+                <input type="text" class="form-control" id="rest_rSocial" placeholder="Nombre" required>
             </div>
             <div class="form-group">
                 <label for="rest_direccion">Direccion</label>
-                <input type="text" class="form-control" id="rest_direccion" placeholder="Ejm: Av. Ejercito 241">
+                <input type="text" class="form-control" id="rest_direccion" placeholder="Ejm: Av. Ejercito 241"
+                    required>
             </div>
             <div class="form-group">
                 <label for="rest_refUbicacion">referencia de ubicacion</label>
                 <input type="text" class="form-control" id="rest_refUbicacion"
-                    placeholder="Ejm:cerca a la comisaria de yanahuara">
+                    placeholder="Ejm:cerca a la comisaria de yanahuara" required>
             </div>
             <div class="form-group">
                 <label for="rest_telefono">telefono</label>
-                <input type="text" class="form-control" id="rest_telefono" placeholder="Ejm:957894562">
+                <input type="number" class="form-control" id="rest_telefono" placeholder="Ejm:957894562" required>
             </div>
             <div class="form-group">
                 <label for="rest_info">info</label>
                 <input type="text" class="form-control" id="rest_info"
-                    placeholder="Ejm: venden muchos anticuchos y hamburguesas xD">
+                    placeholder="Ejm: venden muchos anticuchos y hamburguesas xD" required>
             </div>
             <!-- <div class="form-group">
                 <label for="rest_dAtencion">Dias de atencion</label>
@@ -42,43 +43,50 @@
             </div> -->
             <div class="row">
                 <div class="form-check ml-3 ">
-                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Lun" id="Lunes" checked>
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Lun" id="Lunes"
+                        checked>
                     <label class="form-check-label" for="Lunes">
                         Lunes
                     </label>
                 </div>
                 <div class="form-check ml-3 ">
-                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Mar" id="Martes" checked>
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Mar" id="Martes"
+                        checked>
                     <label class="form-check-label" for="Martes">
                         Martes
                     </label>
                 </div>
                 <div class="form-check ml-3 ">
-                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Mier" id="Miercoles" checked>
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Mier" id="Miercoles"
+                        checked>
                     <label class="form-check-label" for="Miercoles">
                         Miercoles
                     </label>
                 </div>
                 <div class="form-check ml-3 ">
-                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Jue" id="Jueves" checked>
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Jue" id="Jueves"
+                        checked>
                     <label class="form-check-label" for="Jueves">
                         Jueves
                     </label>
                 </div>
                 <div class="form-check ml-3 ">
-                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Vie" id="Viernes" checked>
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Vie" id="Viernes"
+                        checked>
                     <label class="form-check-label" for="Viernes">
                         Viernes
                     </label>
                 </div>
                 <div class="form-check ml-3 ">
-                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Sab" id="Sabado" checked>
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Sab" id="Sabado"
+                        checked>
                     <label class="form-check-label" for="Sabado">
                         Sabado
                     </label>
                 </div>
                 <div class="form-check ml-3 ">
-                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Dom" id="Domingo" checked>
+                    <input class="form-check-input" class="horarioscheck" type="checkbox" value="Dom" id="Domingo"
+                        checked>
                     <label class="form-check-label" for="Domingo">
                         Domingo
                     </label>
@@ -86,32 +94,48 @@
             </div>
             <div class="form-group">
                 <label for="rest_hApertura">hora de apertura</label>
-                <input type="time" class="form-control" id="rest_hApertura" placeholder="Nombre">
+                <input type="time" class="form-control" id="rest_hApertura" placeholder="12:00" required>
             </div>
             <div class="form-group">
                 <label for="rest_hCierre">hora de cierre</label>
-                <input type="time" class="form-control" id="rest_hCierre" placeholder="Nombre">
+                <input type="time" class="form-control" id="rest_hCierre" placeholder="14:00" required>
             </div>
-
             <div class="form-group">
                 <label for="rest_lat">latitud</label>
-                <input type="text" readonly class="form-control" id="rest_lat" placeholder="latitud">
+                <input type="text" readonly class="form-control" id="rest_lat" placeholder="latitud" required>
             </div>
             <div class="form-group">
                 <label for="rest_lng">longitud</label>
-                <input type="text" readonly class="form-control" id="rest_lng" placeholder="longitud">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Example file input</label>
-                <input type="file" class="form-control-file" id="rest_img">
+                <input type="text" readonly class="form-control" id="rest_lng" placeholder="longitud" required>
             </div>
             <div id="contenedor"></div>
-            <button type="button" onclick="handleSubmit1()" class="btn btn-primary">enviar</button>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Imagen previa del agachadito</label>
+                <input type="file" class="form-control-file" id="rest_img">
+                <img id="img_prev" src="#" height="200px" width="200px" alt="imagen del rest" />
+            </div>
+            <button type="button" onclick="handleSubmit1()" class="btn btn-primary" id="btnEnviar">enviar</button>
         </form>
     </div>
 </body>
 <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img_prev').show();
+                $('#img_prev').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#rest_img").change(function () {
+        readURL(this);
+    });
     window.onload = () => {
+        $('#img_prev').hide();
         let rest_lat = document.getElementById("rest_lat")
         let rest_lng = document.getElementById("rest_lng")
         let contenedor = document.getElementById("contenedor")
@@ -165,38 +189,55 @@
             if (document.getElementById("Domingo").checked == true) {
                 Horarios.push(document.getElementById("Domingo").value)
             }
-
-            var formData = new FormData();
-            formData.append('rest_img',
-                rest_img.files[0],
-                rest_img.files[0].name);
-            formData.append('rest_rSocial', rest_rSocial.value)
-            formData.append('rest_direccion', rest_direccion.value)
-            formData.append('rest_telefono', rest_telefono.value)
-            formData.append('rest_lat', rest_lat.value)
-            formData.append('rest_lng', rest_lng.value)
-            formData.append('rest_info', rest_info.value)
-            formData.append('rest_refUbicacion', rest_refUbicacion.value)
-            formData.append('rest_dAtencion', Horarios.toString())
-            formData.append('rest_hApertura', rest_hApertura.value)
-            formData.append('rest_hCierre', rest_hCierre.value)
-            formData.append('rest_avisos', 'prueba')
-            formData.append('rest_estado', 1)
-            formData.append('rest_verificacion', 0)
-            formData.append('usu_id', 1)
-            let headersRest = {
-                method: 'POST',
-                body: formData
-            };
-            fetch('https://huariquesback.herokuapp.com/api/restaurante/crear', headersRest)
-                .then(response => {
-                    console.log(response)
-                    return response.json();
-                }).then(data => {
-                    console.log(data);
-                    alert("restaurante subido exitosamente")
-                    document.getElementById("FormRest").reset();
-                })
+            if (rest_img.files[0] === undefined
+                || rest_rSocial.value == ""
+                || rest_direccion.value == ""
+                || rest_telefono.value == ""
+                || rest_lat.value == ""
+                || rest_lng.value == ""
+                || rest_refUbicacion.value == ""
+                || Horarios.toString() == []
+                || rest_hApertura.value == ""
+                || rest_hCierre.value == "") {
+                alert("falta informacion")
+                return
+            } else {
+                document.getElementById("btnEnviar").innerHTML = "enviando...";
+                document.getElementById("btnEnviar").disabled = true;
+                var formData = new FormData();
+                formData.append('rest_img',
+                    rest_img.files[0],
+                    rest_img.files[0].name);
+                formData.append('rest_rSocial', rest_rSocial.value)
+                formData.append('rest_direccion', rest_direccion.value)
+                formData.append('rest_telefono', rest_telefono.value)
+                formData.append('rest_lat', rest_lat.value)
+                formData.append('rest_lng', rest_lng.value)
+                formData.append('rest_info', rest_info.value)
+                formData.append('rest_refUbicacion', rest_refUbicacion.value)
+                formData.append('rest_dAtencion', Horarios.toString())
+                formData.append('rest_hApertura', rest_hApertura.value)
+                formData.append('rest_hCierre', rest_hCierre.value)
+                formData.append('rest_avisos', 'prueba')
+                formData.append('rest_estado', 1)
+                formData.append('rest_verificacion', 0)
+                formData.append('usu_id', 1)
+                let headersRest = {
+                    method: 'POST',
+                    body: formData
+                };
+                fetch('https://huariquesback.herokuapp.com/api/restaurante/crear', headersRest)
+                    .then(response => {
+                        console.log(response)
+                        return response.json();
+                    }).then(data => {
+                        console.log(data);
+                        alert("restaurante subido exitosamente")
+                        document.getElementById("btnEnviar").innerHTML = "enviar";
+                        document.getElementById("btnEnviar").disabled = false;
+                        document.getElementById("FormRest").reset();
+                    })
+            }
         }
     }
 </script>
