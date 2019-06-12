@@ -130,7 +130,6 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
     $("#rest_img").change(function () {
         readURL(this);
     });
@@ -205,7 +204,7 @@
                 document.getElementById("btnEnviar").innerHTML = "enviando...";
                 document.getElementById("btnEnviar").disabled = true;
                 var formData = new FormData();
-                formData.append('rest_img',
+                formData.append('imagen',
                     rest_img.files[0],
                     rest_img.files[0].name);
                 formData.append('rest_rSocial', rest_rSocial.value)
